@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import BookingCalendar from '@/components/BookingCalendar';
+import YandexReviewsConfig from '@/components/YandexReviewsConfig';
 
 const massageServices = [
   {
@@ -64,7 +65,8 @@ const packages = [
   }
 ];
 
-const testimonials = [
+// Дефолтные отзывы на случай если API не работает
+const defaultTestimonials = [
   {
     name: 'Анна Петрова',
     text: 'Невероятная атмосфера! После сеанса стоунтерапии чувствую себя заново рожденной. Мастера — профессионалы своего дела.',
@@ -83,6 +85,9 @@ const testimonials = [
 ];
 
 export default function Index() {
+  const [testimonials, setTestimonials] = useState(defaultTestimonials);
+  const [loadingReviews, setLoadingReviews] = useState(false);
+  const [showConfig, setShowConfig] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -91,6 +96,23 @@ export default function Index() {
     date: undefined as Date | undefined,
     time: ''
   });
+
+  // Загрузка отзывов с Яндекс.Карт
+  useEffect(() => {
+    const organizationId = localStorage.getItem('yandex_org_id');
+    if (!organizationId) return;
+
+    setLoadingReviews(true);
+    fetch(`https://functions.poehali.dev/9d573f85-d500-4426-a138-88f14f794b3d?organization_id=${organizationId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.reviews && data.reviews.length > 0) {
+          setTestimonials(data.reviews.slice(0, 6)); // Берем первые 6 отзывов
+        }
+      })
+      .catch(err => console.log('Используем дефолтные отзывы:', err))
+      .finally(() => setLoadingReviews(false));
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -284,7 +306,28 @@ export default function Index() {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Более 500 довольных клиентов доверяют нам свое здоровье
             </p>
+            <Button 
+              onClick={() => setShowConfig(!showConfig)} 
+              variant="outline" 
+              size="sm"
+              className="mt-4"
+            >
+              <Icon name="Settings" size={16} className="mr-2" />
+              {showConfig ? 'Скрыть настройки' : 'Настроить яндекс отзывы'}
+            </Button>
+            {loadingReviews && (
+              <p className="text-sm text-muted-foreground mt-4 flex items-center justify-center gap-2">
+                <Icon name="RefreshCw" size={16} className="animate-spin" />
+                Загружаем актуальные отзывы...
+              </p>
+            )}
           </div>
+          
+          {showConfig && (
+            <div className="mb-12">
+              <YandexReviewsConfig />
+            </div>
+          )}
           
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, idx) => (
@@ -304,7 +347,7 @@ export default function Index() {
                     </div>
                     <div>
                       <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">Постоянный клиент</div>
+                      <div className="text-sm text-muted-foreground">Яндекс.Карты</div>
                     </div>
                   </div>
                 </CardContent>

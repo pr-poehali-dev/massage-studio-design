@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import BookingCalendar from '@/components/BookingCalendar';
 
 const massageServices = [
   {
@@ -86,14 +87,24 @@ export default function Index() {
     name: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
+    date: undefined as Date | undefined,
+    time: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.date || !formData.time) {
+      alert('Пожалуйста, выберите дату и время записи');
+      return;
+    }
     console.log('Booking submitted:', formData);
-    alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
-    setFormData({ name: '', phone: '', service: '', message: '' });
+    alert(`Отлично! Вы записаны на ${formData.date.toLocaleDateString('ru-RU')} в ${formData.time}. Мы свяжемся с вами для подтверждения.`);
+    setFormData({ name: '', phone: '', service: '', message: '', date: undefined, time: '' });
+  };
+
+  const handleDateTimeSelect = (date: Date | undefined, time: string) => {
+    setFormData({ ...formData, date, time });
   };
 
   const scrollToSection = (id: string) => {
@@ -305,17 +316,28 @@ export default function Index() {
 
       <section id="booking" className="py-16 md:py-24 bg-accent/5">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h3 className="text-4xl md:text-5xl font-bold mb-4">Записаться на сеанс</h3>
               <p className="text-lg text-muted-foreground">
-                Заполните форму, и мы свяжемся с вами для подтверждения записи
+                Выберите удобные дату и время, и мы свяжемся с вами для подтверждения
               </p>
             </div>
             
-            <Card className="shadow-xl">
-              <CardContent className="pt-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="shadow-xl">
+                <CardContent className="pt-6">
+                  <BookingCalendar 
+                    onSelectDateTime={handleDateTimeSelect}
+                    selectedDate={formData.date}
+                    selectedTime={formData.time}
+                  />
+                </CardContent>
+              </Card>
+              
+              <Card className="shadow-xl">
+                <CardContent className="pt-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-semibold">Ваше имя *</label>
                     <Input
@@ -352,24 +374,29 @@ export default function Index() {
                     />
                   </div>
                   
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-semibold">Комментарий</label>
-                    <Textarea
-                      id="message"
-                      placeholder="Укажите желаемую дату и время, или задайте вопрос"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      rows={4}
-                      className="text-base"
-                    />
-                  </div>
-                  
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
-                    Отправить заявку
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="text-sm font-semibold">Комментарий</label>
+                      <Textarea
+                        id="message"
+                        placeholder="Дополнительные пожелания или вопросы"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        rows={4}
+                        className="text-base"
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-primary hover:bg-primary/90 text-lg py-6"
+                      disabled={!formData.date || !formData.time}
+                    >
+                      {formData.date && formData.time ? 'Подтвердить запись' : 'Выберите дату и время'}
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

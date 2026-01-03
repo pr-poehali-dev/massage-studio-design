@@ -31,7 +31,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
                 <div className="text-sm text-muted-foreground">Довольных клиентов</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary">8 лет</div>
+                <div className="text-3xl font-bold text-primary">10+ лет</div>
                 <div className="text-sm text-muted-foreground">На рынке</div>
               </div>
               <div>

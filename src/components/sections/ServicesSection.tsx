@@ -5,28 +5,64 @@ import Icon from '@/components/ui/icon';
 
 const massageServices = [
   {
-    category: 'Классический массаж',
-    services: [
-      { name: 'Общий массаж тела', duration: '60 мин', price: '3500 ₽', description: 'Полное расслабление всего тела' },
-      { name: 'Массаж спины и шеи', duration: '40 мин', price: '2200 ₽', description: 'Снятие напряжения с плечевого пояса' },
-      { name: 'Массаж ног', duration: '30 мин', price: '1800 ₽', description: 'Улучшение кровообращения' },
-    ]
+    name: 'ТВОЯ спина',
+    duration: '30 мин',
+    price: '3500 ₽',
+    description: 'Экспресс массаж поможет снять напряжение и придать тонус (поясница+спина+швз)'
   },
   {
-    category: 'Лечебный массаж',
-    services: [
-      { name: 'Антицеллюлитный массаж', duration: '50 мин', price: '3200 ₽', description: 'Коррекция проблемных зон' },
-      { name: 'Лимфодренажный массаж', duration: '60 мин', price: '3800 ₽', description: 'Выведение лишней жидкости' },
-      { name: 'Массаж при остеохондрозе', duration: '45 мин', price: '2800 ₽', description: 'Облегчение болевых симптомов' },
-    ]
+    name: 'Массаж на ТВОЙ ВЫБОР',
+    duration: '60 мин',
+    price: '6000 ₽',
+    description: 'Массаж тела, в котором вы сами выбираете какие зоны хотите проработать и какие техники использовать'
   },
   {
-    category: 'Авторские техники',
-    services: [
-      { name: 'Тайский массаж', duration: '90 мин', price: '5500 ₽', description: 'Глубокая проработка мышц' },
-      { name: 'Стоунтерапия', duration: '70 мин', price: '4500 ₽', description: 'Массаж горячими камнями' },
-      { name: 'Аромамассаж', duration: '60 мин', price: '4000 ₽', description: 'С использованием эфирных масел' },
-    ]
+    name: 'Массаж на ТВОЙ ВЫБОР',
+    duration: '90 мин',
+    price: '8000 ₽',
+    description: 'Массаж тела, в котором вы сами выбираете какие зоны хотите проработать и какие техники использовать'
+  },
+  {
+    name: 'Массаж на ТВОЙ ВЫБОР',
+    duration: '120 мин',
+    price: '10000 ₽',
+    description: 'Массаж тела, в котором вы сами выбираете какие зоны хотите проработать и какие техники использовать'
+  },
+  {
+    name: 'Лимфодренажный массаж ТВОЁ ЗДОРОВЬЕ',
+    duration: '60 мин',
+    price: '6000 ₽',
+    description: 'Лимфодренажный массаж — особая техника работы с лимфатической системой организма, направленная на выведение из организма лишней жидкости и снятие отеков. Благодаря ускорению движения лимфы, активизируется процесс похудения и происходит уменьшение объемов тела'
+  },
+  {
+    name: 'Антицеллюлитный массаж ТВОЯ ФИГУРА',
+    duration: '60 мин',
+    price: '6000 ₽',
+    description: 'Улучшает обмен веществ, разглаживает «апельсиновую» корку, уменьшает объемы, делает кожу более эластичной'
+  },
+  {
+    name: 'Спортивный массаж ТВОЙ СПОРТ',
+    duration: '60 мин',
+    price: '6000 ₽',
+    description: 'Подходит для тех, кто активно занимается спортом. При массаже улучшается снабжение мышц кислородом и питательными веществами, стимулируются обменные процессы, мышцы быстрее восстанавливаются, а также увеличивается их работоспособность'
+  },
+  {
+    name: 'ТВОЙ ФИРМЕННЫЙ массаж',
+    duration: '60 мин',
+    price: '6000 ₽',
+    description: 'Глубокая проработка мышц спины. Массаж создаёт общеукрепляющее действие, помогает снять усталость и даёт прилив новых сил'
+  },
+  {
+    name: 'Триггерная терапия',
+    duration: '60 мин',
+    price: '6000 ₽',
+    description: 'Проработка спазмированных мышечных участков'
+  },
+  {
+    name: 'Скульптурный массаж тела с ингибитором жира',
+    duration: '90 мин',
+    price: '8000 ₽',
+    description: 'Уже за первый сеанс уйдет 2-3 см, а качество кожи заметно улучшится. Снимет напряжение и усталость мышц. Очень хороший результат по борьбе с отёками (клинически доказано)'
   }
 ];
 
@@ -45,36 +81,26 @@ export default function ServicesSection({ scrollToSection }: ServicesSectionProp
           </p>
         </div>
 
-        <div className="space-y-12">
-          {massageServices.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="space-y-6">
-              <h4 className="text-2xl font-semibold text-primary flex items-center gap-2">
-                <Icon name="Sparkles" size={24} />
-                {category.category}
-              </h4>
-              <div className="grid md:grid-cols-3 gap-6">
-                {category.services.map((service, serviceIndex) => (
-                  <Card key={serviceIndex} className="hover:shadow-lg transition-all hover:border-primary/50">
-                    <CardHeader>
-                      <CardTitle className="text-xl">{service.name}</CardTitle>
-                      <CardDescription>{service.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <Badge variant="secondary" className="flex items-center gap-1">
-                          <Icon name="Clock" size={14} />
-                          {service.duration}
-                        </Badge>
-                        <div className="text-2xl font-bold text-primary">{service.price}</div>
-                      </div>
-                      <Button onClick={() => scrollToSection('booking')} className="w-full">
-                        Записаться
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {massageServices.map((service, serviceIndex) => (
+            <Card key={serviceIndex} className="hover:shadow-lg transition-all hover:border-primary/50">
+              <CardHeader>
+                <CardTitle className="text-xl">{service.name}</CardTitle>
+                <CardDescription>{service.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <Badge variant="secondary" className="flex items-center gap-1">
+                    <Icon name="Clock" size={14} />
+                    {service.duration}
+                  </Badge>
+                  <div className="text-2xl font-bold text-primary">{service.price}</div>
+                </div>
+                <Button onClick={() => scrollToSection('booking')} className="w-full">
+                  Записаться
+                </Button>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

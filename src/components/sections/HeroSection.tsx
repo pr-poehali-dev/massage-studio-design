@@ -27,7 +27,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
             </div>
             <div className="flex gap-8 pt-6">
               <div>
-                <div className="text-3xl font-bold text-primary">500+</div>
+                <div className="text-3xl font-bold text-primary">1000+</div>
                 <div className="text-sm text-muted-foreground">Довольных клиентов</div>
               </div>
               <div>

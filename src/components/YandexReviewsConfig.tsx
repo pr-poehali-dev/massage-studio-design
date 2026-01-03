@@ -16,9 +16,15 @@ export default function YandexReviewsConfig() {
     }
   }, []);
 
+  const extractOrgId = (input: string): string => {
+    const match = input.match(/\/(\d+)\//);
+    return match ? match[1] : input.trim();
+  };
+
   const handleSave = () => {
-    if (orgId.trim()) {
-      localStorage.setItem('yandex_org_id', orgId.trim());
+    const extractedId = extractOrgId(orgId);
+    if (extractedId) {
+      localStorage.setItem('yandex_org_id', extractedId);
       setSaved(true);
       window.location.reload();
     }
@@ -51,7 +57,7 @@ export default function YandexReviewsConfig() {
                 setOrgId(e.target.value);
                 setSaved(false);
               }}
-              placeholder="Например: 1234567890"
+              placeholder="Вставьте полный URL или ID организации"
               className="flex-1"
             />
             {saved ? (
@@ -74,12 +80,12 @@ export default function YandexReviewsConfig() {
         </div>
 
         <div className="bg-muted/50 p-4 rounded-lg space-y-2 text-sm">
-          <p className="font-semibold">Как найти ID организации:</p>
+          <p className="font-semibold">Как использовать:</p>
           <ol className="list-decimal list-inside space-y-1 text-muted-foreground">
             <li>Откройте Яндекс.Карты и найдите вашу организацию</li>
-            <li>Скопируйте ссылку на карточку организации</li>
-            <li>ID находится в URL после "org/" - числовая часть</li>
-            <li>Пример: yandex.ru/maps/org/<strong>1234567890</strong></li>
+            <li>Скопируйте полный URL карточки организации</li>
+            <li>Вставьте URL целиком — ID извлечется автоматически</li>
+            <li>Пример: yandex.ru/maps/org/tvoy_massazh/<strong>81754500528</strong>/...</li>
           </ol>
         </div>
       </CardContent>

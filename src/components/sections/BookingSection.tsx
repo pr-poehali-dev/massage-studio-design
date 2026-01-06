@@ -281,10 +281,60 @@ export default function BookingSection() {
         </div>
       </section>
 
-      <footer className="py-8 bg-accent/5 border-t border-border">
+      <footer className="py-12 md:py-16 bg-gradient-to-b from-accent/5 to-accent/10 border-t border-border">
         <div className="container mx-auto px-4">
-          <div className="text-center text-muted-foreground">
-            <p>© 2024 Твой Массаж. Все права защищены.</p>
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-8">
+            <div className="space-y-4">
+              <h4 className="text-xl font-bold text-foreground mb-4">О компании</h4>
+              <p className="text-muted-foreground leading-relaxed">
+                <strong className="text-foreground">ТВОЙ МАССАЖ</strong> — специализированная студия профессионального массажа по доступным ценам. 
+                У нас работают только опытные сертифицированные массажисты.
+              </p>
+              <div className="pt-4 space-y-2 text-sm text-muted-foreground">
+                <p className="font-semibold text-foreground">ИП Базлеев Иван Валентинович</p>
+                <p>ИНН: 773475020907</p>
+                <p>ОГРН: 325774600258609</p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="text-xl font-bold text-foreground mb-4">Документы</h4>
+              <div className="space-y-3">
+                <a 
+                  href="https://disk.yandex.ru/i/NvvQ1_qWsEraZQ" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <Icon name="FileText" size={18} className="group-hover:scale-110 transition-transform" />
+                  <span>Политика обработки персональных данных</span>
+                </a>
+                <a 
+                  href="https://disk.yandex.ru/i/hxeok_hC5zXxNw" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <Icon name="FileText" size={18} className="group-hover:scale-110 transition-transform" />
+                  <span>Пользовательское соглашение</span>
+                </a>
+                <a 
+                  href="https://disk.yandex.ru/i/6DfkSCOQZW7LZQ" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <Icon name="FileText" size={18} className="group-hover:scale-110 transition-transform" />
+                  <span>Публичная оферта</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-border pt-8">
+            <div className="text-center text-muted-foreground text-sm">
+              <p>© {new Date().getFullYear()} Твой Массаж. Все права защищены.</p>
+            </div>
           </div>
         </div>
       </footer>

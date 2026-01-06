@@ -161,6 +161,18 @@ export default function Index() {
 
       {/* Mobile Quick Actions - только на мобильных */}
       <div className="fixed bottom-8 left-4 z-50 flex flex-col gap-3 md:hidden">
+        {/* Кнопка записи */}
+        <a
+          href="https://dikidi.ru/tvoimassage"
+          className="group relative"
+          aria-label="Записаться"
+        >
+          <div className="absolute inset-0 bg-primary/30 rounded-full blur-lg group-hover:blur-xl transition-all"></div>
+          <div className="relative w-14 h-14 bg-gradient-to-br from-primary to-primary/80 rounded-full shadow-lg group-hover:shadow-primary/50 flex items-center justify-center group-hover:scale-110 transition-all">
+            <Icon name="CalendarCheck" size={24} className="text-white" />
+          </div>
+        </a>
+
         {/* Кнопка звонка */}
         <a
           href="tel:+79636802020"

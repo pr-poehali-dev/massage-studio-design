@@ -47,8 +47,8 @@ export default function ReviewsSection() {
     <section id="reviews" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Отзывы о студии массажа</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Отзывы о студии массажа</h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Более 1000 довольных клиентов доверяют нам своё здоровье
           </p>
           <Button 

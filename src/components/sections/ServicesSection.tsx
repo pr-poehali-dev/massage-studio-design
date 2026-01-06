@@ -127,7 +127,14 @@ export default function ServicesSection({ scrollToSection }: ServicesSectionProp
                     </Badge>
                     <div className="text-2xl font-bold text-primary">{service.price}</div>
                   </div>
-                  <a href="https://dikidi.ru/#widget=201217" className="w-full">
+                  {/* Desktop button - with widget */}
+                  <a href="https://dikidi.ru/#widget=201217" className="w-full hidden md:block">
+                    <Button className="w-full">
+                      Записаться
+                    </Button>
+                  </a>
+                  {/* Mobile button - direct link */}
+                  <a href="https://dikidi.ru/tvoimassage" className="w-full md:hidden">
                     <Button className="w-full">
                       Записаться
                     </Button>

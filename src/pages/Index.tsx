@@ -59,7 +59,14 @@ export default function Index() {
             </div>
             
             <div className="flex items-center gap-3">
-              <a href="https://dikidi.ru/#widget=201217" className="hidden sm:block">
+              {/* Desktop button - with widget */}
+              <a href="https://dikidi.ru/#widget=201217" className="hidden md:block">
+                <Button className="bg-primary hover:bg-primary/90">
+                  Записаться
+                </Button>
+              </a>
+              {/* Mobile button - direct link */}
+              <a href="https://dikidi.ru/tvoimassage" className="md:hidden">
                 <Button className="bg-primary hover:bg-primary/90">
                   Записаться
                 </Button>
@@ -121,7 +128,7 @@ export default function Index() {
           >
             Контакты
           </button>
-          <a href="https://dikidi.ru/#widget=201217" className="block">
+          <a href="https://dikidi.ru/tvoimassage" className="block">
             <Button className="w-full bg-primary hover:bg-primary/90 py-6 text-lg">
               Записаться на массаж
             </Button>

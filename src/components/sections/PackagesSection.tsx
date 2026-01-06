@@ -59,7 +59,14 @@ export default function PackagesSection({ scrollToSection }: PackagesSectionProp
                     <span className="text-4xl font-bold text-primary">{pkg.price}</span>
                     <span className="text-xl text-muted-foreground line-through">{pkg.oldPrice}</span>
                   </div>
-                  <a href="https://dikidi.ru/#widget=201217" className="w-full">
+                  {/* Desktop button - with widget */}
+                  <a href="https://dikidi.ru/#widget=201217" className="w-full hidden md:block">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-base py-6">
+                      Выбрать абонемент
+                    </Button>
+                  </a>
+                  {/* Mobile button - direct link */}
+                  <a href="https://dikidi.ru/tvoimassage" className="w-full md:hidden">
                     <Button className="w-full bg-primary hover:bg-primary/90 text-base py-6">
                       Выбрать абонемент
                     </Button>

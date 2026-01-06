@@ -18,7 +18,14 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
               Опытные сертифицированные массажисты, натуральные масла и атмосфера абсолютного комфорта.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
-              <a href="https://dikidi.ru/#widget=201217" className="w-full sm:w-auto">
+              {/* Desktop button - with widget */}
+              <a href="https://dikidi.ru/#widget=201217" className="w-full sm:w-auto hidden md:block">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 w-full sm:w-auto h-12 sm:h-auto">
+                  Записаться на сеанс
+                </Button>
+              </a>
+              {/* Mobile button - direct link */}
+              <a href="https://dikidi.ru/tvoimassage" className="w-full sm:w-auto md:hidden">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 w-full sm:w-auto h-12 sm:h-auto">
                   Записаться на сеанс
                 </Button>

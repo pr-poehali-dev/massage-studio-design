@@ -20,7 +20,7 @@ export default function Index() {
             <div className="hidden md:flex gap-6">
               <button onClick={() => scrollToSection('hero')} className="text-foreground hover:text-primary transition-colors">Главная</button>
               <button onClick={() => scrollToSection('services')} className="text-foreground hover:text-primary transition-colors">Услуги</button>
-              <button onClick={() => scrollToSection('packages')} className="text-foreground hover:text-primary transition-colors">Пакеты</button>
+              <button onClick={() => scrollToSection('packages')} className="text-foreground hover:text-primary transition-colors">Абонементы</button>
               <button onClick={() => scrollToSection('reviews')} className="text-foreground hover:text-primary transition-colors">Отзывы</button>
               <button onClick={() => scrollToSection('contacts')} className="text-foreground hover:text-primary transition-colors">Контакты</button>
             </div>

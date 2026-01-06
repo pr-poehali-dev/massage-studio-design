@@ -83,10 +83,10 @@ export default function ServicesSection({ scrollToSection }: ServicesSectionProp
 
         <div className="grid md:grid-cols-3 gap-6">
           {massageServices.map((service, serviceIndex) => (
-            <Card key={serviceIndex} className="hover:shadow-lg transition-all hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-xl">{service.name}</CardTitle>
-                <CardDescription>{service.description}</CardDescription>
+            <Card key={serviceIndex} className="hover:shadow-lg transition-all hover:border-primary/50 flex flex-col">
+              <CardHeader className="flex-grow">
+                <CardTitle className="text-xl min-h-[56px] leading-tight">{service.name}</CardTitle>
+                <CardDescription className="text-sm leading-relaxed min-h-[60px] line-clamp-3">{service.description}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">

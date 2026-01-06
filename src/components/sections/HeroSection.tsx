@@ -18,9 +18,11 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
               Используем только натуральные масла и создаем атмосферу абсолютного спокойствия.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button onClick={() => scrollToSection('booking')} size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                Записаться на сеанс
-              </Button>
+              <a href="https://dikidi.ru/#widget=201217">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                  Записаться на сеанс
+                </Button>
+              </a>
               <Button onClick={() => scrollToSection('services')} size="lg" variant="outline" className="text-lg px-8">
                 Узнать больше
               </Button>

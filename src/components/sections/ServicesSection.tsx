@@ -127,9 +127,11 @@ export default function ServicesSection({ scrollToSection }: ServicesSectionProp
                     </Badge>
                     <div className="text-2xl font-bold text-primary">{service.price}</div>
                   </div>
-                  <Button onClick={() => scrollToSection('booking')} className="w-full">
-                    Записаться
-                  </Button>
+                  <a href="https://dikidi.ru/#widget=201217" className="w-full">
+                    <Button className="w-full">
+                      Записаться
+                    </Button>
+                  </a>
                 </CardContent>
               </Card>
             );

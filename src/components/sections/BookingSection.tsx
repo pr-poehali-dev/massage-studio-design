@@ -1,125 +1,106 @@
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
-import BookingCalendar from '@/components/BookingCalendar';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+
+const faqData = [
+  {
+    question: 'Как записаться на массаж?',
+    answer: 'Записаться можно по телефону +7 (963) 680-20-20, через Telegram @tvoimassagist или нажав на кнопку "Записаться" на сайте. Мы подберём удобное для вас время.'
+  },
+  {
+    question: 'Сколько длится сеанс массажа?',
+    answer: 'Продолжительность сеанса зависит от выбранной услуги: от 30 минут для экспресс-массажа до 120 минут для полного комплексного массажа.'
+  },
+  {
+    question: 'Есть ли противопоказания к массажу?',
+    answer: 'Да, есть ряд противопоказаний: онкология, тяжёлые заболевания сердечно-сосудистой системы, острые воспалительные процессы, высокая температура. Перед первым сеансом мы обязательно проводим консультацию.'
+  },
+  {
+    question: 'Можно ли подарить сертификат на массаж?',
+    answer: 'Да, мы оформляем подарочные сертификаты на любую услугу или абонемент. Это отличный подарок для близких! Свяжитесь с нами для оформления.'
+  },
+  {
+    question: 'Как часто нужно ходить на массаж?',
+    answer: 'Для поддержания здоровья рекомендуем 1-2 сеанса в неделю. При лечебном массаже — курс из 10-15 процедур. Индивидуальный график подбирается на консультации.'
+  },
+  {
+    question: 'Нужна ли специальная подготовка к массажу?',
+    answer: 'Не рекомендуем плотно кушать за 2 часа до сеанса. Принесите удобную одежду. Всё необходимое (полотенца, одноразовые принадлежности, масла) мы предоставляем.'
+  },
+  {
+    question: 'Что такое лимфодренажный массаж?',
+    answer: 'Лимфодренажный массаж — это техника работы с лимфатической системой, направленная на выведение лишней жидкости, снятие отёков и улучшение обмена веществ. Помогает при похудении и укрепляет иммунитет.'
+  },
+  {
+    question: 'Чем антицеллюлитный массаж отличается от обычного?',
+    answer: 'Антицеллюлитный массаж использует более интенсивные техники для глубокой проработки проблемных зон, улучшает микроциркуляцию, разглаживает кожу и уменьшает объёмы. Результат заметен уже после первых сеансов.'
+  }
+];
 
 export default function BookingSection() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    service: '',
-    message: '',
-    date: undefined as Date | undefined,
-    time: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.date || !formData.time) {
-      alert('Пожалуйста, выберите дату и время записи');
-      return;
-    }
-    console.log('Booking submitted:', formData);
-    alert(`Отлично! Вы записаны на ${formData.date.toLocaleDateString('ru-RU')} в ${formData.time}. Мы свяжемся с вами для подтверждения.`);
-    setFormData({ name: '', phone: '', service: '', message: '', date: undefined, time: '' });
-  };
-
-  const handleDateTimeSelect = (date: Date | undefined, time: string) => {
-    setFormData({ ...formData, date, time });
-  };
 
   return (
     <>
       <section id="booking" className="py-16 md:py-24 bg-accent/5">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h3 className="text-4xl md:text-5xl font-bold mb-4">Записаться на сеанс</h3>
+              <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Ответы на ваши вопросы</h3>
               <p className="text-lg text-muted-foreground">
-                Заполните форму, и мы свяжемся с вами в ближайшее время
+                Часто задаваемые вопросы о наших услугах
               </p>
             </div>
 
-            <Card className="shadow-xl border-2">
-              <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-2">
-                  <Icon name="Calendar" size={24} className="text-primary" />
-                  Форма записи
-                </CardTitle>
-                <CardDescription>
-                  Все поля обязательны для заполнения
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Ваше имя</label>
-                      <Input 
-                        required
-                        placeholder="Иван Иванов"
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Телефон</label>
-                      <Input 
-                        required
-                        type="tel"
-                        placeholder="+7 (999) 123-45-67"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      />
-                    </div>
-                  </div>
+            <Card className="shadow-xl border-2 bg-card/50 backdrop-blur">
+              <CardContent className="pt-6">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqData.map((faq, index) => (
+                    <AccordionItem key={index} value={`item-${index}`} className="border-b border-border/50">
+                      <AccordionTrigger className="text-left hover:text-primary transition-colors py-4 text-base font-medium">
+                        <div className="flex items-start gap-3">
+                          <Icon name="HelpCircle" size={20} className="text-primary mt-1 flex-shrink-0" />
+                          <span>{faq.question}</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed pb-4 pl-8">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Желаемая услуга</label>
-                    <Input 
-                      required
-                      placeholder="Общий массаж тела"
-                      value={formData.service}
-                      onChange={(e) => setFormData({...formData, service: e.target.value})}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Дата и время</label>
-                    <BookingCalendar onDateTimeSelect={handleDateTimeSelect} />
-                    {formData.date && formData.time && (
-                      <div className="mt-2 p-3 bg-primary/10 rounded-lg flex items-center gap-2">
-                        <Icon name="CheckCircle" size={16} className="text-primary" />
-                        <span className="text-sm font-medium">
-                          Выбрано: {formData.date.toLocaleDateString('ru-RU')} в {formData.time}
-                        </span>
+                <div className="mt-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="MessageCircle" size={24} className="text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Не нашли ответ?</h4>
+                      <p className="text-muted-foreground mb-4">Свяжитесь с нами удобным способом, и мы ответим на все ваши вопросы!</p>
+                      <div className="flex flex-wrap gap-3">
+                        <a href="tel:+79636802020" className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
+                          <Icon name="Phone" size={18} />
+                          Позвонить
+                        </a>
+                        <a href="https://t.me/tvoimassagist" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
+                          <Icon name="MessageCircle" size={18} />
+                          Telegram
+                        </a>
                       </div>
-                    )}
+                    </div>
                   </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Комментарий</label>
-                    <Textarea 
-                      placeholder="Дополнительные пожелания или вопросы"
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      rows={4}
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
-                    <Icon name="Send" size={20} className="mr-2" />
-                    Отправить заявку
-                  </Button>
-                </form>
+                </div>
               </CardContent>
             </Card>
           </div>

@@ -38,12 +38,15 @@ export default function Index() {
               <button onClick={() => scrollToSection('hero')} className="text-foreground hover:text-primary transition-colors">Главная</button>
               <button onClick={() => scrollToSection('services')} className="text-foreground hover:text-primary transition-colors">Услуги</button>
               <button onClick={() => scrollToSection('packages')} className="text-foreground hover:text-primary transition-colors">Абонементы</button>
+              <button onClick={() => scrollToSection('booking')} className="text-foreground hover:text-primary transition-colors">Вопросы</button>
               <button onClick={() => scrollToSection('reviews')} className="text-foreground hover:text-primary transition-colors">Отзывы</button>
               <button onClick={() => scrollToSection('contacts')} className="text-foreground hover:text-primary transition-colors">Контакты</button>
             </div>
-            <Button onClick={() => scrollToSection('booking')} className="bg-primary hover:bg-primary/90">
-              Записаться
-            </Button>
+            <a href="https://dikidi.ru/#widget=201217">
+              <Button className="bg-primary hover:bg-primary/90">
+                Записаться
+              </Button>
+            </a>
           </div>
         </div>
       </nav>

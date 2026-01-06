@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { useState } from 'react';
 
 const massageServices = [
   {
@@ -71,6 +72,20 @@ interface ServicesSectionProps {
 }
 
 export default function ServicesSection({ scrollToSection }: ServicesSectionProps) {
+  const [expandedServices, setExpandedServices] = useState<Set<number>>(new Set());
+
+  const toggleExpanded = (index: number) => {
+    setExpandedServices(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <section id="services" className="py-16 md:py-24 bg-accent/5">
       <div className="container mx-auto px-4">
@@ -82,26 +97,43 @@ export default function ServicesSection({ scrollToSection }: ServicesSectionProp
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {massageServices.map((service, serviceIndex) => (
-            <Card key={serviceIndex} className="hover:shadow-lg transition-all hover:border-primary/50 flex flex-col">
-              <CardHeader className="flex-grow">
-                <CardTitle className="text-xl min-h-[56px] leading-tight">{service.name}</CardTitle>
-                <CardDescription className="text-sm leading-relaxed min-h-[60px] line-clamp-3">{service.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <Badge variant="secondary" className="flex items-center gap-1">
-                    <Icon name="Clock" size={14} />
-                    {service.duration}
-                  </Badge>
-                  <div className="text-2xl font-bold text-primary">{service.price}</div>
-                </div>
-                <Button onClick={() => scrollToSection('booking')} className="w-full">
-                  Записаться
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+          {massageServices.map((service, serviceIndex) => {
+            const isExpanded = expandedServices.has(serviceIndex);
+            const needsExpansion = service.description.length > 100;
+            
+            return (
+              <Card key={serviceIndex} className="hover:shadow-lg transition-all hover:border-primary/50 flex flex-col">
+                <CardHeader className="flex-grow">
+                  <CardTitle className="text-xl min-h-[56px] leading-tight">{service.name}</CardTitle>
+                  <CardDescription className="text-sm leading-relaxed min-h-[60px]">
+                    <span className={!isExpanded && needsExpansion ? 'line-clamp-3' : ''}>
+                      {service.description}
+                    </span>
+                    {needsExpansion && (
+                      <button
+                        onClick={() => toggleExpanded(serviceIndex)}
+                        className="text-primary hover:underline ml-1 font-medium"
+                      >
+                        {isExpanded ? 'Свернуть' : '...ещё'}
+                      </button>
+                    )}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="flex items-center gap-1">
+                      <Icon name="Clock" size={14} />
+                      {service.duration}
+                    </Badge>
+                    <div className="text-2xl font-bold text-primary">{service.price}</div>
+                  </div>
+                  <Button onClick={() => scrollToSection('booking')} className="w-full">
+                    Записаться
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

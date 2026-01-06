@@ -5,6 +5,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import BookingCalendar from '@/components/BookingCalendar';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function BookingSection() {
   const [formData, setFormData] = useState({
@@ -121,64 +126,103 @@ export default function BookingSection() {
         </div>
       </section>
 
-      <section id="contacts" className="py-16 md:py-24">
+      <section id="contacts" className="py-16 md:py-24 bg-gradient-to-b from-background to-accent/10">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl md:text-5xl font-bold mb-4">Контакты</h3>
+          <div className="text-center mb-16">
+            <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Контакты</h3>
             <p className="text-lg text-muted-foreground">
-              Мы всегда на связи
+              Свяжитесь с нами удобным способом
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <a 
-              href="tel:+79636802020" 
-              className="block transition-transform hover:scale-105"
-            >
-              <Card className="text-center hover:shadow-lg transition-shadow h-full cursor-pointer">
-                <CardContent className="pt-6 space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Icon name="Phone" size={32} className="text-primary" />
-                  </div>
-                </CardContent>
-              </Card>
-            </a>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a 
+                  href="tel:+79636802020" 
+                  className="group block transition-all duration-300 hover:scale-105"
+                >
+                  <Card className="text-center hover:shadow-2xl transition-all h-full cursor-pointer border-2 hover:border-primary/50 bg-card/50 backdrop-blur">
+                    <CardContent className="pt-10 pb-10 space-y-6">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
+                        <div className="relative w-20 h-20 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-primary/50 transition-all group-hover:rotate-12">
+                          <Icon name="Phone" size={36} className="text-primary-foreground" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-lg">Телефон</h4>
+                        <p className="text-sm text-muted-foreground font-medium">+7 (963) 680-20-20</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Позвонить</p>
+              </TooltipContent>
+            </Tooltip>
 
-            <a 
-              href="https://t.me/tvoimassagist" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block transition-transform hover:scale-105"
-            >
-              <Card className="text-center hover:shadow-lg transition-shadow h-full cursor-pointer">
-                <CardContent className="pt-6 space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Icon name="MessageCircle" size={32} className="text-primary" />
-                  </div>
-                </CardContent>
-              </Card>
-            </a>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a 
+                  href="https://t.me/tvoimassagist" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group block transition-all duration-300 hover:scale-105"
+                >
+                  <Card className="text-center hover:shadow-2xl transition-all h-full cursor-pointer border-2 hover:border-primary/50 bg-card/50 backdrop-blur">
+                    <CardContent className="pt-10 pb-10 space-y-6">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
+                        <div className="relative w-20 h-20 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-primary/50 transition-all group-hover:rotate-12">
+                          <Icon name="MessageCircle" size={36} className="text-primary-foreground" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-lg">Telegram</h4>
+                        <p className="text-sm text-muted-foreground font-medium">@tvoimassagist</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Написать в Telegram</p>
+              </TooltipContent>
+            </Tooltip>
 
-            <a 
-              href="https://yandex.ru/maps/-/CLX7vC4Q" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block transition-transform hover:scale-105"
-            >
-              <Card className="text-center hover:shadow-lg transition-shadow h-full cursor-pointer">
-                <CardContent className="pt-6 space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Icon name="MapPin" size={32} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground leading-tight">
-                      г. Москва, ул. Маршала Рыбалко 3<br />
-                      <span className="text-xs">(вход через клуб "Атлетик-А")</span>
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </a>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a 
+                  href="https://yandex.ru/maps/-/CLX7vC4Q" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group block transition-all duration-300 hover:scale-105"
+                >
+                  <Card className="text-center hover:shadow-2xl transition-all h-full cursor-pointer border-2 hover:border-primary/50 bg-card/50 backdrop-blur">
+                    <CardContent className="pt-10 pb-10 space-y-6">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
+                        <div className="relative w-20 h-20 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-primary/50 transition-all group-hover:rotate-12">
+                          <Icon name="MapPin" size={36} className="text-primary-foreground" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-lg">Адрес</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed font-medium px-2">
+                          г. Москва, ул. Маршала<br />Рыбалко 3<br />
+                          <span className="text-xs opacity-75">(вход через клуб "Атлетик-А")</span>
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Показать на карте</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
         </div>
       </section>

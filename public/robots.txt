@@ -1,5 +1,22 @@
+# Разрешаем индексацию всем поисковым роботам
+User-agent: *
+Allow: /
+
+# Запрещаем индексацию служебных файлов
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.tsx$
+Disallow: /*.ts$
+
+# Специальные правила для основных поисковиков
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
@@ -10,5 +27,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Указываем путь к sitemap
+Sitemap: https://massage-studio-design.poehali.dev/sitemap.xml

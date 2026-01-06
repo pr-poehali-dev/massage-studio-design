@@ -131,41 +131,54 @@ export default function BookingSection() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6 space-y-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Icon name="Phone" size={24} className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Телефон</h4>
-                  <p className="text-muted-foreground">+7 (999) 123-45-67</p>
-                </div>
-              </CardContent>
-            </Card>
+            <a 
+              href="tel:+79636802020" 
+              className="block transition-transform hover:scale-105"
+            >
+              <Card className="text-center hover:shadow-lg transition-shadow h-full cursor-pointer">
+                <CardContent className="pt-6 space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                    <Icon name="Phone" size={32} className="text-primary" />
+                  </div>
+                </CardContent>
+              </Card>
+            </a>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6 space-y-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Icon name="Mail" size={24} className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Email</h4>
-                  <p className="text-muted-foreground">info@tvoymassazh.ru</p>
-                </div>
-              </CardContent>
-            </Card>
+            <a 
+              href="https://t.me/tvoimassagist" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block transition-transform hover:scale-105"
+            >
+              <Card className="text-center hover:shadow-lg transition-shadow h-full cursor-pointer">
+                <CardContent className="pt-6 space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                    <Icon name="MessageCircle" size={32} className="text-primary" />
+                  </div>
+                </CardContent>
+              </Card>
+            </a>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6 space-y-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Icon name="MapPin" size={24} className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Адрес</h4>
-                  <p className="text-muted-foreground">г. Москва, ул. Примерная, 123</p>
-                </div>
-              </CardContent>
-            </Card>
+            <a 
+              href="https://yandex.ru/maps/-/CLX7vC4Q" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block transition-transform hover:scale-105"
+            >
+              <Card className="text-center hover:shadow-lg transition-shadow h-full cursor-pointer">
+                <CardContent className="pt-6 space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                    <Icon name="MapPin" size={32} className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground leading-tight">
+                      г. Москва, ул. Маршала Рыбалко 3<br />
+                      <span className="text-xs">(вход через клуб "Атлетик-А")</span>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </a>
           </div>
         </div>
       </section>

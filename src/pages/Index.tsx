@@ -166,17 +166,17 @@ export default function Index() {
           </div>
         </a>
 
-        {/* Кнопка WhatsApp */}
+        {/* Кнопка Telegram */}
         <a
-          href="https://wa.me/79636802020"
+          href="https://t.me/tvoimassagist"
           target="_blank"
           rel="noopener noreferrer"
           className="group relative"
-          aria-label="WhatsApp"
+          aria-label="Telegram"
         >
-          <div className="absolute inset-0 bg-green-500/30 rounded-full blur-lg group-hover:blur-xl transition-all"></div>
-          <div className="relative w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg group-hover:shadow-green-500/50 flex items-center justify-center group-hover:scale-110 transition-all">
-            <Icon name="MessageCircle" size={24} className="text-white" />
+          <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-lg group-hover:blur-xl transition-all"></div>
+          <div className="relative w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full shadow-lg group-hover:shadow-blue-500/50 flex items-center justify-center group-hover:scale-110 transition-all">
+            <Icon name="Send" size={24} className="text-white" />
           </div>
         </a>
       </div>

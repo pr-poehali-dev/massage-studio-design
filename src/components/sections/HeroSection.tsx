@@ -10,12 +10,12 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground">
-              Гармония тела и духа
-            </h2>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground">
+              Профессиональный массаж в Москве
+            </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Погрузитесь в мир расслабления с нашими авторскими техниками массажа. 
-              Используем только натуральные масла и создаем атмосферу абсолютного спокойствия.
+              Студия «Твой Массаж» — 15+ видов профессионального массажа по доступным ценам. 
+              Опытные сертифицированные массажисты, натуральные масла и атмосфера абсолютного комфорта.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <a href="https://dikidi.ru/#widget=201217">
@@ -45,7 +45,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
           <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl animate-scale-in">
             <img 
               src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80" 
-              alt="Спа атмосфера" 
+              alt="Профессиональный массаж в студии Твой Массаж — расслабляющая спа-атмосфера" 
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-accent/30 to-transparent"></div>

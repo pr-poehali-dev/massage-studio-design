@@ -96,7 +96,7 @@ export default function BookingSection() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Ответы на ваши вопросы</h3>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Часто задаваемые вопросы о массаже</h2>
               <p className="text-lg text-muted-foreground">
                 Часто задаваемые вопросы о наших услугах
               </p>
@@ -183,7 +183,7 @@ export default function BookingSection() {
       <section id="contacts" className="py-16 md:py-24 bg-gradient-to-b from-background to-accent/10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Контакты</h3>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Контакты студии массажа</h2>
             <p className="text-lg text-muted-foreground">
               Свяжитесь с нами удобным способом
             </p>

@@ -9,7 +9,7 @@ const massageServices = [
     name: 'ТВОЯ спина',
     duration: '30 мин',
     price: '3500 ₽',
-    description: 'Экспресс массаж поможет снять напряжение и придать тонус (поясница+спина+швз)'
+    description: 'Экспресс-массаж спины поможет снять напряжение и придать тонус (поясница + спина + шейно-воротниковая зона)'
   },
   {
     name: 'Массаж на ТВОЙ ВЫБОР',
@@ -90,9 +90,9 @@ export default function ServicesSection({ scrollToSection }: ServicesSectionProp
     <section id="services" className="py-16 md:py-24 bg-accent/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h3 className="text-4xl md:text-5xl font-bold mb-4">Наши услуги</h3>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Услуги массажа в Москве</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Широкий выбор техник массажа для вашего здоровья и комфорта
+            Лимфодренажный, антицеллюлитный, спортивный и другие виды массажа для здоровья
           </p>
         </div>
 

@@ -47,9 +47,9 @@ export default function ReviewsSection() {
     <section id="reviews" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h3 className="text-4xl md:text-5xl font-bold mb-4">Отзывы наших клиентов</h3>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Отзывы о студии массажа</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Более 500 довольных клиентов доверяют нам свое здоровье
+            Более 1000 довольных клиентов доверяют нам своё здоровье
           </p>
           <Button 
             onClick={() => setShowConfig(!showConfig)} 

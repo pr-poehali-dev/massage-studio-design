@@ -36,9 +36,9 @@ export default function PackagesSection({ scrollToSection }: PackagesSectionProp
     <section id="packages" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h3 className="text-4xl md:text-5xl font-bold mb-4">Абонементы на услуги</h3>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Абонементы на массаж</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Специальные предложения с выгодой до 30%
+            Выгодные пакетные предложения — экономия до 30%
           </p>
         </div>
 

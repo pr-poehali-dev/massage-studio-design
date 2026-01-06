@@ -37,6 +37,45 @@ const faqData = [
   {
     question: 'Нужна ли специальная подготовка к массажу?',
     answer: 'Не рекомендуем плотно кушать за 2 часа до сеанса. Принесите удобную одежду. Всё необходимое (полотенца, одноразовые принадлежности, масла) мы предоставляем.'
+  }
+];
+
+const additionalFaqData = [
+  {
+    question: 'Нужно ли брать с собой что-то на сеанс?',
+    answer: 'Нет, всё необходимое для подготовки к сеансу вы найдете на клиентском столике. Одноразовое нижнее белье и шапочки, дезодорант, мицеллярную воду, резинки для волос, влажные и сухие салфетки.'
+  },
+  {
+    question: 'Есть ли у вас парковка?',
+    answer: 'В наших филиалах в СЗАО и ЮАО доступны городские парковки, как платные так и бесплатные.'
+  },
+  {
+    question: 'У меня есть лишний вес, я стесняюсь идти на массаж',
+    answer: 'Если это единственное, что вас останавливает – смело записывайтесь на сеанс. Любое тело – прекрасно, наши специалисты работают не только со спортсменами, среди наших гостей есть также представители size+'
+  },
+  {
+    question: 'Что делать, если я забыл вещи на сеансе?',
+    answer: 'Все забытые вещи хранятся до появления их владельцев'
+  },
+  {
+    question: 'Не успела сделать эпиляцию, как на меня будет смотреть мастер?',
+    answer: 'С уважением. Мастер не оценивает волосы на ногах, он оценивает и работает над вашим телом и состоянием ваших мышц'
+  },
+  {
+    question: 'Есть ли в студии душ?',
+    answer: 'Да, и по желанию вы можете им воспользоваться до и после сеанса. В кабинете мы также подготовили для вас салфетки, мицелярную воду, дезодорант, сухой шампунь, шапочку для волос и даже одноразовое белье.'
+  },
+  {
+    question: 'А у меня не будет аллергии на вашу косметику?',
+    answer: 'Все средства на которых мы проводим процедуры - гипоаллергенны и безопасны и даже не пачкают одежду и имеют нейтральный аромат.'
+  },
+  {
+    question: 'У меня все четко по графику, сделают ли мне процедуру вовремя?',
+    answer: 'Мы также уважаем ваше время как и вы наше, поэтому все процедуры будут начаты и закончены вовремя, не беспокойтесь.'
+  },
+  {
+    question: 'А будут синяки?',
+    answer: 'Абсолютно нет. Мы делаем всё для вашего комфорта и безопасности здоровья. Единственным исключением может быть индивидуальные моменты гостя в зависимости от особенностей вашего тела'
   },
   {
     question: 'Что такое лимфодренажный массаж?',
@@ -49,6 +88,7 @@ const faqData = [
 ];
 
 export default function BookingSection() {
+  const [showAllFaq, setShowAllFaq] = useState(false);
 
   return (
     <>
@@ -78,7 +118,40 @@ export default function BookingSection() {
                       </AccordionContent>
                     </AccordionItem>
                   ))}
+                  
+                  {showAllFaq && additionalFaqData.map((faq, index) => (
+                    <AccordionItem key={`additional-${index}`} value={`additional-${index}`} className="border-b border-border/50">
+                      <AccordionTrigger className="text-left hover:text-primary transition-colors py-4 text-base font-medium">
+                        <div className="flex items-start gap-3">
+                          <Icon name="HelpCircle" size={20} className="text-primary mt-1 flex-shrink-0" />
+                          <span>{faq.question}</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed pb-4 pl-8">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
                 </Accordion>
+
+                <div className="mt-6 text-center">
+                  <button
+                    onClick={() => setShowAllFaq(!showAllFaq)}
+                    className="inline-flex items-center gap-2 px-6 py-3 text-primary hover:bg-primary/10 rounded-lg transition-colors font-medium"
+                  >
+                    {showAllFaq ? (
+                      <>
+                        <Icon name="ChevronUp" size={20} />
+                        Скрыть дополнительные вопросы
+                      </>
+                    ) : (
+                      <>
+                        <Icon name="ChevronDown" size={20} />
+                        Показать все вопросы ({additionalFaqData.length})
+                      </>
+                    )}
+                  </button>
+                </div>
 
                 <div className="mt-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
                   <div className="flex items-start gap-4">
